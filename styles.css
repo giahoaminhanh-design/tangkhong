@@ -20,15 +20,23 @@ button{appearance:none;border:0;cursor:pointer;background:linear-gradient(180deg
 button.secondary{background:rgba(35,54,100,.75)}
 button.ghost{background:transparent;border:1px solid rgba(255,255,255,.3)}
 .note{color:#e6f0ffcc;font-size:13px}
-.sky{position:relative;height:60vh;min-height:460px;margin-top:16px;border-radius:24px;border:1px solid rgba(255,255,255,.14);background:rgba(10,16,28,.22);overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(3px)}
-.bubble{position:absolute;bottom:-140px;display:flex;align-items:center;justify-content:center;width:120px;height:120px;border-radius:50%;padding:14px;text-align:center;color:#0b1630;font-weight:800;background:radial-gradient(120% 120% at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,.55));border:1px solid rgba(255,255,255,.9);box-shadow:0 16px 40px rgba(0,0,0,.35), inset 0 8px 18px rgba(255,255,255,.6);filter:saturate(1.02) drop-shadow(0 12px 30px rgba(0,0,0,.35));animation:rise 12s linear forwards,drift 5s ease-in-out infinite;will-change:transform,opacity,filter}
-.bubble.small{width:96px;height:96px;font-weight:700;opacity:.95}
-.bubble.big{width:150px;height:150px}
-.bubble.keep{background:radial-gradient(120% 120% at 30% 30%, #ffffff, #d5ebff);box-shadow:0 0 0 6px rgba(255,255,255,.16),0 16px 40px rgba(0,0,0,.35), inset 0 10px 20px rgba(255,255,255,.7)}
-@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-150vh)}}
-@keyframes drift{0%,100%{transform:translateY(-20vh) translateX(-6px)}50%{transform:translateY(-22vh) translateX(6px)}}
-.pop{animation:pop .7s ease forwards}
-@keyframes pop{0%{transform:translateY(-40vh) scale(1);opacity:1}60%{transform:translateY(-44vh) scale(1.18);opacity:.9;filter:blur(0px)}100%{transform:translateY(-48vh) scale(0.4);opacity:0;filter:blur(3px)}}
+.sky{position:relative;height:64vh;min-height:520px;margin-top:16px;border-radius:24px;border:1px solid rgba(255,255,255,.14);background:rgba(10,16,28,.22);overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(3px)}
+.bubble{position:absolute;bottom:-160px;display:flex;align-items:center;justify-content:center;width:130px;height:130px;border-radius:50%;padding:16px;text-align:center;color:#0b1630;font-weight:800;background:radial-gradient(120% 120% at 30% 30%, rgba(255,255,255,.97), rgba(255,255,255,.6));border:1px solid rgba(255,255,255,.95);box-shadow:0 18px 44px rgba(0,0,0,.38), inset 0 10px 20px rgba(255,255,255,.75);filter:saturate(1.02) drop-shadow(0 12px 30px rgba(0,0,0,.35));animation:rise 16s linear forwards,drift 5.5s ease-in-out infinite;will-change:transform,opacity,filter}
+.bubble.small{width:100px;height:100px;font-weight:700;opacity:.95}
+.bubble.big{width:168px;height:168px}
+.bubble.keep{background:radial-gradient(120% 120% at 30% 30%, #ffffff, #d5ebff);box-shadow:0 0 0 6px rgba(255,255,255,.16),0 18px 44px rgba(0,0,0,.38), inset 0 12px 22px rgba(255,255,255,.8)}
+@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-200vh)}}
+@keyframes drift{0%,100%{transform:translateY(-28vh) translateX(-8px)}50%{transform:translateY(-32vh) translateX(10px)}}
+.pop{animation:pop .8s ease forwards}
+@keyframes pop{0%{transform:translateY(-48vh) scale(1);opacity:1}60%{transform:translateY(-52vh) scale(1.24);opacity:.92;filter:blur(0px)}100%{transform:translateY(-56vh) scale(0.35);opacity:0;filter:blur(4px)}}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,.55);backdrop-filter:blur(8px);z-index:50}
+.modal.show{display:flex}
+.card{max-width:780px;margin:20px;color:#eaf2ff;line-height:1.6;background:rgba(10,16,30,.7);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.card h3{margin-top:0;margin-bottom:8px;font-size:22px}
+.card p{margin:10px 0}
+.card .cta{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+.card a.btn{text-decoration:none;color:white;padding:10px 14px;border-radius:12px;background:linear-gradient(180deg,#3c5aa6,#243a6a)}
+.card button{background:transparent;border:1px solid rgba(255,255,255,.3)}
 footer{margin:16px 0 30px;color:#cfe0ff;font-size:12px;text-align:center}
 .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(10,16,28,.45);font-size:12px}
 .result{margin-top:12px;font-size:16px;color:#eaf2ff;line-height:1.6}
