@@ -20,12 +20,12 @@ button.secondary{background:rgba(35,54,100,.75)}
 button.ghost{background:transparent;border:1px solid rgba(255,255,255,.3)}
 .note{color:#e6f0ffcc;font-size:13px}
 .sky{position:relative;height:66vh;min-height:560px;margin-top:16px;border-radius:24px;border:1px solid rgba(255,255,255,.14);background:rgba(10,16,28,.22);overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(3px)}
-.bubble{position:absolute;bottom:-180px;display:flex;align-items:center;justify-content:center;width:138px;height:138px;border-radius:50%;padding:16px;text-align:center;color:#0b1630;font-weight:800;background:radial-gradient(120% 120% at 30% 30%, rgba(255,255,255,.98), rgba(255,255,255,.62));border:1px solid rgba(255,255,255,.97);box-shadow:0 20px 48px rgba(0,0,0,.4), inset 0 12px 24px rgba(255,255,255,.78);filter:saturate(1.02) drop-shadow(0 12px 30px rgba(0,0,0,.35));animation: rise 24s linear forwards, drift 7s ease-in-out infinite;will-change: transform, opacity, filter;}
+.bubble{position:absolute;bottom:-180px;display:flex;align-items:center;justify-content:center;width:138px;height:138px;border-radius:50%;padding:16px;text-align:center;color:#0b1630;font-weight:800;background:radial-gradient(120% 120% at 30% 30%, rgba(255,255,255,.98), rgba(255,255,255,.62));border:1px solid rgba(255,255,255,.97);box-shadow:0 20px 48px rgba(0,0,0,.4), inset 0 12px 24px rgba(255,255,255,.78);filter:saturate(1.02) drop-shadow(0 12px 30px rgba(0,0,0,.35));animation: rise 24s linear forwards, drift 7s ease-in-out infinite}
 .bubble.small{width:108px;height:108px;font-weight:700;opacity:.95}
 .bubble.big{width:176px;height:176px}
 .bubble.keep{background:radial-gradient(120% 120% at 30% 30%, #ffffff, #d5ebff);box-shadow:0 0 0 6px rgba(255,255,255,.16),0 20px 48px rgba(0,0,0,.4), inset 0 12px 24px rgba(255,255,255,.82)}
-@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-320vh)}}
-@keyframes drift{0%,100%{transform:translateY(-38vh) translateX(-12px)}50%{transform:translateY(-42vh) translateX(14px)}}
+@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-340vh)}}
+@keyframes drift{0%,100%{transform:translateY(-40vh) translateX(-12px)}50%{transform:translateY(-44vh) translateX(14px)}}
 .pop{animation:pop .9s ease forwards}
 @keyframes pop{0%{transform:translateY(-52vh) scale(1);opacity:1}60%{transform:translateY(-56vh) scale(1.28);opacity:.92;filter:blur(0px)}100%{transform:translateY(-60vh) scale(0.34);opacity:0;filter:blur(5px)}}
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,.55);backdrop-filter:blur(10px);z-index:50}
