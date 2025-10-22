@@ -1,87 +1,12 @@
 
-const keywordScores = {
-  "gia đình":5,"cha mẹ":5,"bố mẹ":5,"anh em":4,"bạn thân":4,"sức khỏe":5,"bản thân":5,"bình yên":5,"tương lai":4,"ước mơ":4,"lòng tốt":5,"tử tế":5,"tự do":4,"trung thực":4,
-  "học":4,"thi":3,"làm việc":4,"nỗ lực":4,"mục tiêu":4,"điểm cao":3,"thành công":3,"học bổng":4,"tự học":4,"rèn luyện":4,"kiến thức":4,"thời gian":3,"cải thiện":3,
-  "bạn bè":3,"người yêu":3,"tình bạn":3,"kết nối":3,"gia sư":3,"bị bỏ rơi":1,"bị quên":1,"một mình":2,"không ai hiểu":2,"chia tay":2,
-  "like":1,"follow":1,"trend":1,"hot":1,"viral":1,"được chú ý":1,"so sánh":1,"người khác":1,"bị tụt lại":1,"thua kém":1,"đi sau":1,"fomo":1,"sự kiện":2,"đi chơi":2,
-  "bình an":5,"vui vẻ":4,"hạnh phúc":5,"biết ơn":5,"thư giãn":4,"ngủ ngon":4,"thảnh thơi":4,"tự tin":5,"nhẹ nhõm":5,"an yên":5,
-  "lo lắng":1,"sợ":1,"bỏ lỡ":1,"áp lực":1,"mệt mỏi":1,"kiệt sức":1,"buồn":2,"tức giận":1,"ghen tị":1,"bồn chồn":1,"stress":1
-};
-
-function getSentenceScore(s){
-  s=(s||"").toLowerCase();
-  let total=0;
-  for(const [k,v] of Object.entries(keywordScores)){
-    if(s.includes(k)) total+=v;
-  }
-  if(s.length>=30) total+=1;
-  return total||2;
-}
-
-const $=sel=>document.querySelector(sel);
-const $$=sel=>Array.from(document.querySelectorAll(sel));
-
-function createBubble(text,xp){
-  const b=document.createElement('div');
-  b.className='bubble';
-  b.textContent=text||'...';
-  b.style.left=`calc(${xp}% - 90px)`;
-  const delay=(Math.random()*0.8)+0.2;
-  b.style.animationDelay=`${delay}s`;
-  $('.sky').appendChild(b);
-  return b;
-}
-
-function popBubble(b){
-  if(!b) return;
-  b.classList.add('pop');
-  setTimeout(()=>b.remove(),700);
-  try{
-    const ctx=new (window.AudioContext||window.webkitAudioContext)();
-    const o=ctx.createOscillator(); const g=ctx.createGain();
-    o.type='triangle'; o.frequency.value=520;
-    g.gain.setValueAtTime(0.08, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+0.12);
-    o.connect(g).connect(ctx.destination); o.start(); o.stop(ctx.currentTime+0.13);
-  }catch{}
-}
-function keepBubble(b){ if(b) b.classList.add('keep'); }
-
-document.addEventListener('DOMContentLoaded', ()=>{
-  $('#go').addEventListener('click', runFilter);
-  $('#reset').addEventListener('click', resetAll);
-});
-
-function readInputs(){
-  const vals=$$('.inp').map(i=>i.value.trim()).filter(Boolean);
-  while(vals.length<5) vals.push('...');
-  return vals.slice(0,5);
-}
-
-function runFilter(){
-  $('.result').textContent='';
-  $('.sky').innerHTML='';
-
-  const inputs=readInputs();
-  const scored=inputs.map(t=>({text:t, score:getSentenceScore(t)}));
-  const sorted=[...scored].sort((a,b)=>b.score-a.score);
-  const keepSet=new Set(sorted.slice(0,2).map(x=>x.text));
-
-  const positions=[12,30,50,70,88];
-  inputs.forEach((text,idx)=>{
-    const b=createBubble(text,positions[idx]);
-    if(keepSet.has(text)){
-      setTimeout(()=>keepBubble(b), 1600+Math.random()*600);
-    }else{
-      setTimeout(()=>popBubble(b), 1800+Math.random()*1200);
-    }
-  });
-
-  setTimeout(()=>{$('.result').textContent="Những điều còn lại — có lẽ là điều bạn thật sự cần chăm sóc.";},2600);
-}
-
-function resetAll(){
-  $$('.inp').forEach(i=>i.value='');
-  $('.sky').innerHTML='';
-  $('.result').textContent='';
-}
+const keywordScores={"gia đình":5,"cha mẹ":5,"bố mẹ":5,"anh em":4,"bạn thân":4,"sức khỏe":5,"bản thân":5,"bình yên":5,"tương lai":4,"ước mơ":4,"lòng tốt":5,"tử tế":5,"tự do":4,"trung thực":4,"học":4,"thi":3,"làm việc":4,"nỗ lực":4,"mục tiêu":4,"điểm cao":3,"thành công":3,"học bổng":4,"tự học":4,"rèn luyện":4,"kiến thức":4,"thời gian":3,"cải thiện":3,"bạn bè":3,"người yêu":3,"tình bạn":3,"kết nối":3,"gia sư":3,"bị bỏ rơi":1,"bị quên":1,"một mình":2,"không ai hiểu":2,"chia tay":2,"like":1,"follow":1,"trend":1,"hot":1,"viral":1,"được chú ý":1,"so sánh":1,"người khác":1,"bị tụt lại":1,"thua kém":1,"đi sau":1,"fomo":1,"sự kiện":2,"đi chơi":2,"bình an":5,"vui vẻ":4,"hạnh phúc":5,"biết ơn":5,"thư giãn":4,"ngủ ngon":4,"thảnh thơi":4,"tự tin":5,"nhẹ nhõm":5,"an yên":5,"lo lắng":1,"sợ":1,"bỏ lỡ":1,"áp lực":1,"mệt mỏi":1,"kiệt sức":1,"buồn":2,"tức giận":1,"ghen tị":1,"bồn chồn":1,"stress":1};
+function getSentenceScore(s){s=(s||"").toLowerCase().trim();if(!s)return 0;let t=0;for(const[e,n]of Object.entries(keywordScores))s.includes(e)&&(t+=n);return s.length>=30&&(t+=1),t||2}
+const $=e=>document.querySelector(e),$$=e=>Array.from(document.querySelectorAll(e));
+function createInput(){const e=document.createElement("div");e.className="row";const t=document.createElement("input");t.type="text",t.className="inp",t.placeholder="Nhập điều bạn đang sợ bỏ lỡ…";const n=document.createElement("button");n.className="ghost",n.type="button",n.textContent="Xoá",n.onclick=()=>e.remove(),e.appendChild(t),e.appendChild(n),$(".inputs").appendChild(e),t.focus()}
+function createBubble(e,t,n="normal"){const o=document.createElement("div");return o.className="bubble"+("big"===n?" big":"small"===n?" small":""),o.textContent=e||"...",o.style.left=`calc(${t}% - ${"big"===n?"75":"60"}px)`,o.style.animationDelay=`${.1+.9*Math.random()}s`,$(".sky").appendChild(o),o}
+function popBubble(e){e&&(e.classList.add("pop"),setTimeout(()=>e.remove(),700));try{const e=new(window.AudioContext||window.webkitAudioContext),t=e.createOscillator(),n=e.createGain();t.type="triangle",t.frequency.value=520,n.gain.setValueAtTime(.07,e.currentTime),n.gain.exponentialRampToValueAtTime(.0001,e.currentTime+.12),t.connect(n).connect(e.destination),t.start(),t.stop(e.currentTime+.13)}catch{}}
+function keepBubble(e){e&&e.classList.add("keep")}
+document.addEventListener("DOMContentLoaded",()=>{$("#add").addEventListener("click",createInput),$("#go").addEventListener("click",runFilter),$("#reset").addEventListener("click",resetAll);for(let e=0;e<3;e++)createInput()});
+function readInputs(){return $$(".inp").map(e=>e.value.trim()).filter(Boolean)}
+function runFilter(){$(".result").innerHTML="",$(".sky").innerHTML="";const e=readInputs();if(0===e.length)return void($(".result").innerHTML='<span class="tip">Hãy viết ít nhất 1 điều để Tầng Không lọc giúp bạn.</span>');const t=e.map((e=>({text:e,score:getSentenceScore(e)}))),n=[],o=[],i=[];t.forEach((e=>{e.score<2?i.push(e):e.score<4?n.push(e):o.push(e)}));const r=t.length,a=Array.from({length:r},((e,t)=>8+84/((r-1)||1)*t));t.forEach(((e,t)=>{const r=e.score>=4?"big":e.score<2?"small":"normal",s=createBubble(e.text,a[t],r);e.score<2?setTimeout((()=>popBubble(s)),1600+1e3*Math.random()):setTimeout((()=>keepBubble(s)),1400+500*Math.random())}));const s=[...o,...n];let l="";if(0===s.length)l="Có lẽ những điều bạn đang lo lúc này không thật sự thuộc về bạn. Hít sâu một nhịp — rồi thử viết lại điều <i>thật sự</i> chạm vào tim bạn.";else{const e=s.map((e=>`“${e.text}”`)).join(", "),t=s.reduce(((e,t)=>e+t.score),0)/s.length;let n="";n=t>=4?"Đó là phần gốc rễ của bạn — giá trị, sức khỏe, những điều dài lâu. Hãy chăm chúng bằng sự kiên nhẫn, không cần gấp.":t>=3?"Đó là những điều quan trọng vừa đủ. Bạn có thể tiến từng bước nhỏ và vẫn sống nhẹ.":"Bạn đang giữ lại điều vừa phải. Hãy thử giảm tiếng ồn từ so sánh và để ý nhịp thở của mình nhiều hơn.",l=`Sau tất cả, ${e} là những điều quan trọng nhất dành cho bạn ngay lúc này. ${n}`}setTimeout((()=>{$(".result").innerHTML=l}),2400)}
+function resetAll(){$(".inputs").innerHTML="";for(let e=0;e<3;e++)createInput();$(".sky").innerHTML="";$(".result").textContent=""}
