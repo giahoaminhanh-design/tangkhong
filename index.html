@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bể Bong Bóng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <audio id="intro" autoplay loop>
+    <source src="./assets/Soft piano with gentle guitar and ambient pads Slo... (6049187c10c24d92a0f563518e30148b).mp3" type="audio/mpeg">
+  </audio>
+  <audio id="voice" autoplay>
+    <source src="./assets/ElevenLabs_2025-10-22T16_49_55_Nhu – Calm and Confident_pvc_sp94_s50_sb75_v3.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <header class="header">
+      <div class="badge">Bể Bong Bóng · Website chữa FOMO</div>
+      <h1 class="title">Bể Bong Bóng</h1>
+      <p class="subtitle">Bể Bong Bóng — Nguyễn Mai Gia Hòa và Phạm Minh Anh</p>
+      <div class="formBox">
+        <div class="inputs"></div>
+        <div class="actions">
+          <button id="add" class="ghost">+ Thêm dòng</button>
+          <button id="go">Thả bong bóng</button>
+          <button id="reset" class="secondary">Làm lại</button>
+          <span class="note">Gợi ý: “sợ không đủ giỏi”, “sợ ít like”, “sợ không đẹp”, “sợ không có tiền”, “sợ bị bỏ rơi”…</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="sky" aria-label="Bầu trời bong bóng"></section>
+    <div class="result"></div>
+    <footer>© 2025 · Bể Bong Bóng — Nguyễn Mai Gia Hòa & Phạm Minh Anh</footer>
+  </div>
+
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Lời nhắn">
+    <div class="card">
+      <div class="content"></div>
+      <div class="cta" style="justify-content:flex-end;margin-top:8px">
+        <button id="close">Đóng</button>
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
